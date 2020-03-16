@@ -11,4 +11,4 @@
   (projectile-enable-caching t))
 
 (require 'ox-reveal)
-(setq org-reveal-root "file:///home/patrick/opt/reveal")
+(setq org-reveal-root "file:///~/opt/reveal")
