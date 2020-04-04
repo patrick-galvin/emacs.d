@@ -20,7 +20,8 @@
 (add-hook 'clojure-mode #'display-line-numbers-mode)
 (global-company-mode)
 (global-flycheck-mode)
-
+(show-paren-mode 1)
+(set-face-attribute 'show-paren-match nil :weight 'ultra-bold :background nil :foreground "orange")
 (set-face-attribute 'flycheck-error nil :foreground "red2" :underline '(:color "red2" :style wave) :weight 'ultra-bold)
 (set-face-attribute 'flycheck-warning nil :foreground "orange2" :underline '(:color "orange2" :style wave))
 

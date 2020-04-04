@@ -3,6 +3,8 @@
 (tool-bar-mode -1)
 (load-theme 'hc-zenburn t)
 
+(setq auto-save-default nil)
+(setq initial-scratch-message "")
 (setq column-number-mode t)
 (setq explicit-shell-file-name "/bin/zsh")
 (setq auto-window-vscroll nil)
