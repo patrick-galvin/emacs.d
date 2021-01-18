@@ -10,6 +10,10 @@
   :custom
   (projectile-enable-caching t))
 
+(use-package git-timemachine
+  :ensure t
+  :bind ("C-x C-g" . git-timemachine-toggle))
+
 (use-package org-roam
       :hook 
       (after-init . org-roam-mode)
@@ -22,5 +26,15 @@
               :map org-mode-map
               (("C-c n i" . org-roam-insert))))
 
+(require 'ido)
+(ido-mode t)
+
 (require 'ox-reveal)
 (setq org-reveal-root "file:///~/opt/reveal")
+
+(require 'symbol-overlay)
+(global-set-key (kbd "M-i") 'symbol-overlay-put)
+(global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
+(global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
+(global-set-key (kbd "<f7>") 'symbol-overlay-mode)
+(global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)

@@ -10,6 +10,7 @@
 (setq auto-window-vscroll nil)
 (set-default-coding-systems 'utf-8)
 (fringe-mode 0)
+(set-frame-font "FiraCode-10.5" nil t)
 
 ;; No cursor blinking, it's distracting
 (blink-cursor-mode 0)

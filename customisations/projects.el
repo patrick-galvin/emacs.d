@@ -1,0 +1,12 @@
+										
+(autoload 'projectile-find-file "projectile" "Projectile mode" t)
+(autoload 'projectile-grep "projectile" "Projectile mode" t)
+(projectile-mode +1)
+(setq projectile-enable-caching nil)
+(setq projectile-indexing-method 'alien)
+;(global-unset-key (kbd "C-c C-f"))
+;(global-unset-key (kbd "C-c C-g"))
+;(global-set-key (kbd "C-c C-f") 'projectile-find-file)
+										;(global-set-key (kbd "C-c C-g") 'projectile-grep)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(setq projectile-project-search-path '("~/dev/"))

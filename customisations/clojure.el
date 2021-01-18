@@ -19,6 +19,8 @@
 (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
 (add-hook 'clojure-mode #'display-line-numbers-mode)
 (global-company-mode)
+(add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
+(add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
 (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
 (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
 (setq company-minimum-prefix-length 2)
@@ -31,20 +33,25 @@
 
 (defun cider-mode-hooks ()
   (eldoc-mode 1)
+;  (cider-auto-test-mode 1)
   (paredit-mode 1)
   (snoopy-mode 1))
 
 ;; provides minibuffer documentation for the code you're typing into the repl
-(add-hook 'cider-mode-hook 'cider-mode-hooks)
+(add-hook 'cider-repl-mode-hook 'cider-mode-hooks)
 
 ;; go right to the REPL buffer when it's finished connecting
 (setq cider-repl-pop-to-buffer-on-connect t)
+(setq cider-test-show-report-on-success nil)
+(setq cider-show-error-buffer 'only-in-repl)
+(setq cider-repl-buffer-size-limit 100000)
 
 ;; When there's a cider error, show its buffer and switch to it
 (setq cider-show-error-buffer t)
 (setq cider-auto-select-error-buffer t)
 (setq cider-repl-display-help-banner nil)
 (setq cider-font-lock-dynamically '(macro core function var))
+(setq cljr-warn-on-eval nil)
 
 ;; Where to store the cider history.
 (setq cider-repln-history-file "~/.emacs.d/cider-history")
