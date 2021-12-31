@@ -51,3 +51,13 @@ flycheck_*.el
 
 # refactor
 .mc-lists.el
+
+ido.last
+.last-package-update-day
+.local/
+.lsp-session-v1
+bookmarks
+eln-cache/
+projects
+transient/
+url/

@@ -10,6 +10,7 @@
 (setq auto-window-vscroll nil)
 (set-default-coding-systems 'utf-8)
 (fringe-mode 0)
+(global-idle-highlight-mode 1)
 (set-frame-font "FiraCode-10.5" nil t)
 
 ;; No cursor blinking, it's distracting
@@ -41,3 +42,4 @@
 (global-set-key [remap kill-buffer] #'kill-this-buffer)
 (add-hook 'focus-out-hook #'garbage-collect)
 (cd "~/dev")
+(set-face-attribute 'idle-highlight nil :weight 'bold :foreground "#FFB242")

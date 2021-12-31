@@ -38,3 +38,13 @@
 (global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
 (global-set-key (kbd "<f7>") 'symbol-overlay-mode)
 (global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)
+
+(require 'sgml-mode)
+
+(defun pretty-print-xml ()
+  (interactive)
+  (save-excursion
+    (sgml-pretty-print (point-min) (point-max))
+    (indent-region (point-min) (point-max))))
+
+(setq org-taskjuggler-default-project-duration 999)

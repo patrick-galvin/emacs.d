@@ -1,6 +1,5 @@
 (add-hook 'clojure-mode-hook #'paredit-mode)
 (add-hook 'clojure-mode-hook 'snoopy-mode)
-
 (require 'clj-refactor)
 
 (defun my-clojure-mode-hook ()
@@ -14,10 +13,38 @@
   :config
   (require 'flycheck-clj-kondo))
 
+(setq cljr-ignore-analyzer-errors t)
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
 (add-hook 'clojure-mode #'display-line-numbers-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (add-hook 'clojure-mode-hook 'lsp)	    ;;
+;; (add-hook 'clojurescript-mode-hook 'lsp) ;;
+;; (add-hook 'clojurec-mode-hook 'lsp)	    ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; (setq gc-cons-threshold (* 100 1024 1024)
+;;       read-process-output-max (* 1024 1024)
+;;       treemacs-space-between-root-nodes nil
+;; 	  lsp-idle-delay 1.000
+;; 	  lsp-log-io nil
+;;       company-minimum-prefix-length 1
+;;       lsp-lens-enable t
+;;       lsp-signature-auto-activate nil
+;;       ; lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
+;;       ; lsp-enable-completion-at-point nil ; uncomment to use cider completion instead of lsp
+;;       )
+
+;; (add-hook 'lsp-mode-hook
+;;           (lambda ()
+;;             (when (-contains? '(clojure-mode clojurescript-mode clojurec-mode) major-mode)
+;;               (setq-local company-backends '(company-lsp)))))
+
+
+
+(set-variable 'cider-lein-parameters "with-profile +dev repl")
 (global-company-mode)
 (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
 (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
@@ -33,7 +60,7 @@
 
 (defun cider-mode-hooks ()
   (eldoc-mode 1)
-;  (cider-auto-test-mode 1)
+  (cider-auto-test-mode 1)
   (paredit-mode 1)
   (snoopy-mode 1))
 
@@ -45,6 +72,9 @@
 (setq cider-test-show-report-on-success nil)
 (setq cider-show-error-buffer 'only-in-repl)
 (setq cider-repl-buffer-size-limit 100000)
+(setq cider-test-default-exclude-selectors '("integration" "flakey"))
+(add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
+(add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
 
 ;; When there's a cider error, show its buffer and switch to it
 (setq cider-show-error-buffer t)
