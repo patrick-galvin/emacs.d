@@ -1,11 +1,10 @@
 (require 'package)
 
-;(add-to-list 'package-archives
-;  '("melpa-stable" . "http://stable.melpa.org/packages/"))
-
 (setq package-archives
 	  '(("melpa" . "https://melpa.org/packages/")
 		("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 (setq org-roam-v2-ack t)
 
